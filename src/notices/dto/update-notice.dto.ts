@@ -3,17 +3,15 @@ import { IsOptional, IsString } from 'class-validator';
 export class UpdateNoticeDto {
   @IsOptional()
   @IsString()
-  question?: string;
+  title?: string;
 
   @IsOptional()
   @IsString()
-  answer?: string;
+  content?: string;
 
   @IsOptional()
-  @IsString()
-  grade?: string;
+  importance?: string;
 
   @IsOptional()
-  @IsString()
-  subject?: string;
+  isOpen?: string;
 }
