@@ -16,30 +16,20 @@ export class NoticesService {
     return this.datalogsRepository.count();
   }
 
-  findAll(
-    page?: number,
-    pageSize?: number,
-    keyword?: string,
-    grade?: string,
-    subject?: string,
-  ) {
+  findAll(page?: number, pageSize?: number, keyword?: string) {
     let searchQuery = `SELECT 
         id, 
-        input_time, 
-        question, 
-        answer, 
-        grade, 
-        subject FROM notice WHERE 1=1`;
+        title, 
+        content, 
+        writeDate, 
+        noticeDate, 
+        writer,
+        importance,
+        isOpen FROM notice WHERE 1=1`;
     if (keyword) {
       keyword = keyword.replace(/ /g, '');
-      searchQuery += ` AND (REPLACE(question,' ','') LIKE '%${keyword}%' 
-      OR REPLACE(answer,' ','') LIKE '%${keyword}%')`;
-    }
-    if (grade) {
-      searchQuery += ` AND grade='${grade}'`;
-    }
-    if (subject) {
-      searchQuery += ` AND subject='${subject}'`;
+      searchQuery += ` AND (REPLACE(title,' ','') LIKE '%${keyword}%' 
+      OR REPLACE(content,' ','') LIKE '%${keyword}%')`;
     }
     if (page && pageSize) {
       searchQuery += ` LIMIT ${pageSize} OFFSET ${(page - 1) * pageSize}`;

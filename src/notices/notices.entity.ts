@@ -10,18 +10,24 @@ export class Notice {
   @PrimaryGeneratedColumn()
   id: number;
 
+  @Column()
+  title: Date;
+
+  @Column()
+  content: string;
+
   @CreateDateColumn()
-  input_time: Date;
+  writeDate: Date;
+
+  @CreateDateColumn()
+  noticeDate: string;
 
   @Column()
-  question: string;
+  writer: string;
 
   @Column()
-  answer: string;
+  importance: number;
 
   @Column()
-  grade: string;
-
-  @Column()
-  subject: string;
+  isOpen: number;
 }

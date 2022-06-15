@@ -11,8 +11,6 @@ export class NoticesController {
     @Query('page') page?: number,
     @Query('pageSize') pageSize?: number,
     @Query('keyword') keyword?: string,
-    @Query('grade') grade?: string,
-    @Query('subject') subject?: string,
   ) {
     try {
       const datalogListTotalCount = await this.datalogsService.getTotalCount();
@@ -20,8 +18,6 @@ export class NoticesController {
         page,
         pageSize,
         keyword,
-        grade,
-        subject,
       );
       return { datalogListTotalCount, datalogList };
     } catch (error) {
